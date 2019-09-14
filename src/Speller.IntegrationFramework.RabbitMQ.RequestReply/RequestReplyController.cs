@@ -39,7 +39,7 @@ namespace Speller.IntegrationFramework.RabbitMQ.RequestReply
         {
             var correlationId = delivery.CorrelationId;
 
-            if (correlationId == null || !contexts.Remove(correlationId, out var context))
+            if (correlationId == null || !contexts.TryRemove(correlationId, out var context))
             {
                 await delivery.TryReject();
                 return;
