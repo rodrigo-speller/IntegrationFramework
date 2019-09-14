@@ -14,15 +14,15 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static RabbitMQQueueOptionsBuilder Bind(this RabbitMQQueueOptionsBuilder builder, string exchange, string routingKey, IDictionary<string, object> arguments = null)
         {
-            builder.OnDeclaredActions.Add(async (services) => {
+            builder.OnDeclaredActions.Add((services) => Task.Run(() => {
                 var (_, channel, queue) = services.GetContext();
 
                 var startup = services.GetService<LifecycleController>();
 
-                startup.On(LifecycleState.BindEntities, async () => {
+                startup.On(LifecycleState.BindEntities, () => Task.Run(() => {
                     channel.Model.QueueBind(queue.Name, exchange, routingKey, arguments);
-                });
-            });
+                }));
+            }));
             
             return builder;
         }
@@ -53,7 +53,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (handler == null)
                 throw new ArgumentNullException(nameof(handler));
 
-            builder.OnDeclaredActions.Add(async (services) =>
+            builder.OnDeclaredActions.Add((services) => Task.Run(() =>
             {
                 var (contextAccessor, channel, queue) = services.GetContext();
 
@@ -63,7 +63,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     LifecycleState.SubscribeQueues,
                     () => channel.Subscribe(new QueueConsumerSubscriber(queue.Name, acknowledgeMode, exceptionMode, new LambdaMessageHandler(handler), contextAccessor))
                 );
-            });
+            }));
 
             return builder;
         }
@@ -73,7 +73,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (!MessageHandlersLoader.IsMessageHandler(handlerType))
                 throw new ArgumentException("The supplied type is not a valid message handler.", nameof(handlerType));
 
-            builder.OnDeclaredActions.Add(async (services) => {
+            builder.OnDeclaredActions.Add((services) => Task.Run(() => {
                 var (_, channel, queue) = services.GetContext();
 
                 var startup = services.GetService<LifecycleController>();
@@ -82,7 +82,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     LifecycleState.SubscribeQueues,
                     () => channel.Subscribe(MessageHandlersLoader.BuildMessageHandlerToQueueDeclare(queue.Name, services, handlerType))
                 );
-            });
+            }));
 
             return builder;
         }

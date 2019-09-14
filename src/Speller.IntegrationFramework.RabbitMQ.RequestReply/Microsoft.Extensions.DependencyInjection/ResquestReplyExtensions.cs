@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Rodrigo Speller. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Threading.Tasks;
 using Speller.IntegrationFramework;
 using Speller.IntegrationFramework.RabbitMQ.RequestReply;
 
@@ -20,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder
                 .DeclareQueue(queueBuilder => queueBuilder
-                    .OnDeclare(async queue => controller = new RequestReplyController(queue.Name))
+                    .OnDeclare(queue => Task.Run(() => controller = new RequestReplyController(queue.Name)))
                     .Subscribe(acknowledgeMode, exceptionMode, delivery => controller.OnDelivery(delivery))
                 )
                 .Map<RequestReplyModel>(model => {

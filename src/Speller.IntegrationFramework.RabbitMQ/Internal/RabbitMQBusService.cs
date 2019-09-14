@@ -38,17 +38,17 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             var options = this.options;
             var controller = this.controller;
             
-            controller.On(LifecycleState.PreInitialization, async () => {
+            controller.On(LifecycleState.PreInitialization, () => Task.Run(() => {
                 connection = options.ConnectionFactory.CreateConnection();
-            });
+            }));
 
             controller.On(LifecycleState.CreateChannels, async () => {
                 await CreateChannels();
             });
 
-            controller.On(LifecycleState.Shutdown, async () => {
+            controller.On(LifecycleState.Shutdown, () => Task.Run(() => {
                 connection.Close();
-            });
+            }));
 
             await controller.Start();
         }
