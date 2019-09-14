@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Rodrigo Speller</Authors>
+    <Copyright>Copyright (c) Rodrigo Speller. All rights reserved.</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/rodrigo-speller/IntegrationFramework</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
