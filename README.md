@@ -18,7 +18,7 @@ The quickest way to get the latest release of the Integration Framework is to ad
 
 ## Simple RabbitMQ "Hello World" sample code
 
-In the sender application, we need only resolve the channel, and publish the message to `hello-queue`:
+In the sender application, resolve the channel and publish message to `hello-queue`:
 
 ```csharp
 public static async Task SayHelloWorld()
@@ -31,7 +31,7 @@ public static async Task SayHelloWorld()
 }
 ```
 
-In the receiver application, we declaree a message handler to subscribe the message queue `hello-queue`:
+In the receiver application, declare a message handler to subscribe the message queue `hello-queue`:
 
 ```csharp
 [Subscribe("hello-queue")]
