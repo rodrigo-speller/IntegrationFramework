@@ -53,7 +53,7 @@ To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sam
 
 ## RabbitMQ samples
 
-|Sample|Description|Pattern|
+|Sample|Description|Patterns|
 |-|-|-|
 |[Hello World](samples/Speller.IntegrationPatterns.RabbitMQ/Sample01-HelloWorld)|Sending and receiving text messages through a queue.|[Point-to-Point Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)|
 |[Work queues](samples/Speller.IntegrationPatterns.RabbitMQ/Sample02-WorkQueues)|Distributing to workers.|[Competing Consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html)|
@@ -66,7 +66,7 @@ To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sam
 If you find any bug, please report them using the GitHub issue tracker.
 
 # License
-This software is licensed under the Apache License, Version 2.0 (see LICENSE.txt).
+This software is licensed under the Apache License, Version 2.0 (see [LICENSE.txt](LICENSE.txt)).
 
 # Copyright
 Copyright (c) Rodrigo Speller. All rights reserved.
