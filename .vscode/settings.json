@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.vs": true,
+        "**/.vscode": true,
+        "src/*/bin": true,
+        "src/*/obj": true,
+        "samples/**/bin": true,
+        "samples/**/obj": true,
+    }
+}
