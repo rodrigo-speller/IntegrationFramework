@@ -63,10 +63,10 @@ To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sam
 |[Request/Reply](samples/Speller.IntegrationPatterns.RabbitMQ/Sample06-RPC)|RPC/RPI communication.|[Remote Procedure Invocation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EncapsulatedSynchronousIntegration.html), [Request-Reply](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html), [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html), [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html), [Correlation Identifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), [Return Address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html)|
 
 # Bug Reports
-If you find any bug, please report them using the GitHub issue tracker.
+If you found any bug, please report them using the GitHub issue tracker.
 
 # License
-This software is licensed under the Apache License, Version 2.0 (see [LICENSE.txt](LICENSE.txt)).
+This software is licensed under the Apache License, Version 2.0 (see [LICENSE](LICENSE.txt)).
 
 # Copyright
 Copyright (c) Rodrigo Speller. All rights reserved.
