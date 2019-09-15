@@ -56,7 +56,7 @@ To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sam
 |Sample|Description|Patterns|
 |-|-|-|
 |[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel][PointToPointChannel]|
-|[Work queues][Sample02-WorkQueues]|Distributing to workers.|[Competing Consumers][CompetingConsumers]|
+|[Work queues][Sample02-WorkQueues]|Distributing tasks to workers.|[Competing Consumers][CompetingConsumers]|
 |[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel][PublishSubscribeChannel]
 |[Routing][Sample04-Routing]|Receiving messages selectively.|[Event Message][EventMessage], [Message Router][MessageRouter]|
 |[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Event Message][EventMessage], [Message Router][MessageRouter]|
