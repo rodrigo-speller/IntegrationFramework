@@ -1,6 +1,6 @@
 # .Net Speller Integration Framework
 
-The ***Integration Framework*** ia an initiative to implement a modular framework of integration patterns, as proposed by *Gregor Hohpe* and *Bobby Woolf* in the *[Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)* book.
+The ***Integration Framework*** ia an initiative to implement a modular framework of integration patterns, as proposed by *Gregor Hohpe* and *Bobby Woolf* in the *[Enterprise Integration Patterns][EnterpriseIntegrationPatterns]* book.
 
 The concern of this project is to maintain a collaborative development of a complete framework that abstracts and simplifies the concrete concepts of key application integration technologies through the definitions and the vocabulary of the *Enterprise Integration Patterns* book.
 
@@ -11,8 +11,8 @@ The quickest way to get the latest release of the Integration Framework is to ad
 
 |Module|Package name|Latest version|
 |------|------------|--------------|
-|RabbitMQ Publish/Subscribe|Speller.IntegrationFramework.RabbitMQ|[![NuGet](https://img.shields.io/nuget/v/Speller.IntegrationFramework.RabbitMQ.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Speller.IntegrationFramework.RabbitMQ/)|
-|RabbitMQ Request/Reply|Speller.IntegrationFramework.RabbitMQ.RequestReply|[![NuGet](https://img.shields.io/nuget/v/Speller.IntegrationFramework.RabbitMQ.RequestReply.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Speller.IntegrationFramework.RabbitMQ.RequestReply/)|
+|RabbitMQ Publish/Subscribe|Speller.IntegrationFramework.RabbitMQ|[![NuGet][badge:nuget:Speller.IntegrationFramework.RabbitMQ]][nuget:Speller.IntegrationFramework.RabbitMQ]|
+|RabbitMQ Request/Reply|Speller.IntegrationFramework.RabbitMQ.RequestReply|[![NuGet][badge:nuget:Speller.IntegrationFramework.RabbitMQ.RequestReply]][nuget:Speller.IntegrationFramework.RabbitMQ.RequestReply]|
 
 # Samples
 
@@ -49,24 +49,56 @@ public class Receiver : IMessageHandler<RabbitMQDelivery>
 }
 ```
 
-To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sample code](samples/Speller.IntegrationPatterns.RabbitMQ/Sample01-HelloWorld)*
+To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sample code][Sample01-HelloWorld]*
 
 ## RabbitMQ samples
 
 |Sample|Description|Patterns|
 |-|-|-|
-|[Hello World](samples/Speller.IntegrationPatterns.RabbitMQ/Sample01-HelloWorld)|Sending and receiving text messages through a queue.|[Point-to-Point Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html)|
-|[Work queues](samples/Speller.IntegrationPatterns.RabbitMQ/Sample02-WorkQueues)|Distributing to workers.|[Competing Consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html)|
-|[Publish/Subscribe](samples/Speller.IntegrationPatterns.RabbitMQ/Sample03-PublishSubscribe)|Sending messages to many consumers at once.|[Publish-Subscribe Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html)
-|[Routing](samples/Speller.IntegrationPatterns.RabbitMQ/Sample04-Routing)|Receiving messages selectively.|[Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html), [Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html)|
-|[Topics](samples/Speller.IntegrationPatterns.RabbitMQ/Sample05-Topics)|Receiving messages based on a pattern (topics).|[Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html), [Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html)|
-|[Request/Reply](samples/Speller.IntegrationPatterns.RabbitMQ/Sample06-RPC)|RPC/RPI communication.|[Remote Procedure Invocation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EncapsulatedSynchronousIntegration.html), [Request-Reply](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html), [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html), [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html), [Correlation Identifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), [Return Address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html)|
+|[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel][PointToPointChannel]|
+|[Work queues][Sample02-WorkQueues]|Distributing to workers.|[Competing Consumers][CompetingConsumers]|
+|[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel][PublishSubscribeChannel]
+|[Routing][Sample04-Routing]|Receiving messages selectively.|[Event Message][EventMessage], [Message Router][MessageRouter]|
+|[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Event Message][EventMessage], [Message Router][MessageRouter]|
+|[Request/Reply][Sample06-RPC]|RPC/RPI communication.|[Remote Procedure Invocation][RemoteProcedureInvocation], [Request-Reply][RequestReply], [Command Message][CommandMessage], [Document Message][DocumentMessage], [Correlation Identifier][CorrelationIdentifier], [Return Address][ReturnAddress]|
 
 # Bug Reports
 If you found any bug, please report them using the GitHub issue tracker.
 
 # License
-This software is licensed under the Apache License, Version 2.0 (see [LICENSE](LICENSE.txt)).
+This software is licensed under the Apache License, Version 2.0 (see [LICENSE][LICENSE]).
 
 # Copyright
 Copyright (c) Rodrigo Speller. All rights reserved.
+
+<!-- Common Links -->
+[LICENSE]: LICENSE.txt
+
+<!-- Nuget Packages Links -->
+[nuget:Speller.IntegrationFramework.RabbitMQ]:              https://www.nuget.org/packages/Speller.IntegrationFramework.RabbitMQ/
+[nuget:Speller.IntegrationFramework.RabbitMQ.RequestReply]: https://www.nuget.org/packages/Speller.IntegrationFramework.RabbitMQ.RequestReply/
+
+[badge:nuget:Speller.IntegrationFramework.RabbitMQ]:                https://img.shields.io/nuget/v/Speller.IntegrationFramework.RabbitMQ.svg?style=flat-square
+[badge:nuget:Speller.IntegrationFramework.RabbitMQ.RequestReply]:   https://img.shields.io/nuget/v/Speller.IntegrationFramework.RabbitMQ.RequestReply.svg?style=flat-square
+
+<!-- Sample Links -->
+[Sample01-HelloWorld]:          samples/Speller.IntegrationPatterns.RabbitMQ/Sample01-HelloWorld
+[Sample02-WorkQueues]:          samples/Speller.IntegrationPatterns.RabbitMQ/Sample02-WorkQueues
+[Sample03-PublishSubscribe]:    samples/Speller.IntegrationPatterns.RabbitMQ/Sample03-PublishSubscribe
+[Sample04-Routing]:             samples/Speller.IntegrationPatterns.RabbitMQ/Sample04-Routing
+[Sample05-Topics]:              samples/Speller.IntegrationPatterns.RabbitMQ/Sample05-Topics
+[Sample06-RPC]:                 samples/Speller.IntegrationPatterns.RabbitMQ/Sample06-RPC
+
+<!-- Enterprise Integration Patterns Links-->
+[EnterpriseIntegrationPatterns]:    https://www.enterpriseintegrationpatterns.com/
+[CommandMessage]:                   https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html
+[CompetingConsumers]:               https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html
+[CorrelationIdentifier]:            https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html
+[DocumentMessage]:                  https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html
+[EventMessage]:                     https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html
+[MessageRouter]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html
+[PointToPointChannel]:              https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html
+[PublishSubscribeChannel]:          https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html
+[RemoteProcedureInvocation]:        https://www.enterpriseintegrationpatterns.com/patterns/messaging/EncapsulatedSynchronousIntegration.html
+[RequestReply]:                     https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html
+[ReturnAddress]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html
