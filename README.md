@@ -1,6 +1,6 @@
 # .Net Speller Integration Framework
 
-The ***Integration Framework*** ia an initiative to implement a modular framework of integration patterns, as proposed by *Gregor Hohpe* and *Bobby Woolf* in the *[Enterprise Integration Patterns][EnterpriseIntegrationPatterns]* book.
+The ***Integration Framework*** ia an initiative to implement a modular framework of integration patterns, as proposed by *Gregor Hohpe* and *Bobby Woolf* in the *[Enterprise Integration Patterns]* book.
 
 The concern of this project is to maintain a collaborative development of a complete framework that abstracts and simplifies the concrete concepts of key application integration technologies through the definitions and the vocabulary of the *Enterprise Integration Patterns* book.
 
