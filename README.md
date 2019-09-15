@@ -49,17 +49,19 @@ public class Receiver : IMessageHandler<RabbitMQDelivery>
 }
 ```
 
-To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sample code][Sample01-HelloWorld]*
+To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sample code][Sample01-HelloWorld]*.
 
-## RabbitMQ samples
+## RabbitMQ Sample Projects
+
+Follows the samples list to the [RabbitMQ][nuget:Speller.IntegrationFramework.RabbitMQ] and [RabbitMQ.RequestReply][nuget:Speller.IntegrationFramework.RabbitMQ.RequestReply] packages usage.
 
 |Sample|Description|Patterns|
 |-|-|-|
-|[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel]|
-|[Work queues][Sample02-WorkQueues]|Distributing tasks to workers.|[Competing Consumers]|
-|[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel]
-|[Routing][Sample04-Routing]|Receiving messages selectively.|[Selective Consumer], [Event Message], [Message Router]|
-|[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Selective Consumer], [Event Message], [Message Router]|
+|[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel], [Document Message]|
+|[Work queues][Sample02-WorkQueues]|Distributing tasks to workers.|[Competing Consumers], [Command Message]|
+|[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel], [Event Message]
+|[Routing][Sample04-Routing]|Receiving messages selectively.|[Selective Consumer], [Message Router], [Event Message]|
+|[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Selective Consumer], [Message Router], [Event Message]|
 |[Request/Reply][Sample06-RPC]|RPC/RPI communication.|[Remote Procedure Invocation], [Request-Reply], [Command Message], [Document Message], [Correlation Identifier], [Return Address]|
 
 # Bug Reports

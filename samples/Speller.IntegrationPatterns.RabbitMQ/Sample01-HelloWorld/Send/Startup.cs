@@ -11,6 +11,7 @@ namespace Send
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareQueue("hello", exclusive: false)
                                 .MapRoute<string>("hello")
                         )
                 );

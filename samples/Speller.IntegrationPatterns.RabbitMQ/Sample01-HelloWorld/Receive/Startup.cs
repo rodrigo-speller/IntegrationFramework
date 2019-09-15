@@ -9,8 +9,9 @@ namespace Receive
                 .AddRabbitMQBusService(
                     service => service
                         .ConnectionString("amqp://localhost")
-                        .AddChannel(
+                        .DefaultChannel(
                             channel => channel
+                                .DeclareQueue("hello", exclusive: false)
                                 .Subscribe<Receive>()
                         )
                 );

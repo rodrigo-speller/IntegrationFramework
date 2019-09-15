@@ -25,7 +25,8 @@ namespace Send
         {
             await host.StartAsync();
 
-            var channel = host.Services.GetService<IPublishSubscribeChannel>();
+            var services = host.Services;
+            var channel = services.GetService<IPublishSubscribeChannel>();
 
             var message = "Hello World!";
             await channel.Publish(message);
