@@ -55,12 +55,12 @@ To see a complete Sender/Receiver sample, go to the *["Hello World" RabbitMQ sam
 
 |Sample|Description|Patterns|
 |-|-|-|
-|[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel][PointToPointChannel]|
-|[Work queues][Sample02-WorkQueues]|Distributing tasks to workers.|[Competing Consumers][CompetingConsumers]|
-|[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel][PublishSubscribeChannel]
-|[Routing][Sample04-Routing]|Receiving messages selectively.|[Event Message][EventMessage], [Message Router][MessageRouter]|
-|[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Event Message][EventMessage], [Message Router][MessageRouter]|
-|[Request/Reply][Sample06-RPC]|RPC/RPI communication.|[Remote Procedure Invocation][RemoteProcedureInvocation], [Request-Reply][RequestReply], [Command Message][CommandMessage], [Document Message][DocumentMessage], [Correlation Identifier][CorrelationIdentifier], [Return Address][ReturnAddress]|
+|[Hello World][Sample01-HelloWorld]|Sending and receiving text messages through a queue.|[Point-to-Point Channel]|
+|[Work queues][Sample02-WorkQueues]|Distributing tasks to workers.|[Competing Consumers]|
+|[Publish/Subscribe][Sample03-PublishSubscribe]|Sending messages to many consumers at once.|[Publish-Subscribe Channel]
+|[Routing][Sample04-Routing]|Receiving messages selectively.|[Selective Consumer], [Event Message], [Message Router]|
+|[Topics][Sample05-Topics]|Receiving messages based on a pattern (topics).|[Selective Consumer], [Event Message], [Message Router]|
+|[Request/Reply][Sample06-RPC]|RPC/RPI communication.|[Remote Procedure Invocation], [Request-Reply], [Command Message], [Document Message], [Correlation Identifier], [Return Address]|
 
 # Bug Reports
 If you found any bug, please report them using the GitHub issue tracker.
@@ -90,15 +90,16 @@ Copyright (c) Rodrigo Speller. All rights reserved.
 [Sample06-RPC]:                 samples/Speller.IntegrationPatterns.RabbitMQ/Sample06-RPC
 
 <!-- Enterprise Integration Patterns Links-->
-[EnterpriseIntegrationPatterns]:    https://www.enterpriseintegrationpatterns.com/
-[CommandMessage]:                   https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html
-[CompetingConsumers]:               https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html
-[CorrelationIdentifier]:            https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html
-[DocumentMessage]:                  https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html
-[EventMessage]:                     https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html
-[MessageRouter]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html
-[PointToPointChannel]:              https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html
-[PublishSubscribeChannel]:          https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html
-[RemoteProcedureInvocation]:        https://www.enterpriseintegrationpatterns.com/patterns/messaging/EncapsulatedSynchronousIntegration.html
-[RequestReply]:                     https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html
-[ReturnAddress]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html
+[Enterprise Integration Patterns]:  https://www.enterpriseintegrationpatterns.com/
+[Command Message]:                  https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html
+[Competing Consumers]:              https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html
+[Correlation Identifier]:           https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html
+[Document Message]:                 https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html
+[Event Message]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html
+[Message Router]:                   https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html
+[Point-to-Point Channel]:           https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html
+[Publish-Subscribe Channel]:        https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html
+[Remote Procedure Invocation]:      https://www.enterpriseintegrationpatterns.com/patterns/messaging/EncapsulatedSynchronousIntegration.html
+[Request-Reply]:                    https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html
+[Return Address]:                   https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html
+[Selective Consumer]:               https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSelector.html
