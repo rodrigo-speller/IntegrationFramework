@@ -57,7 +57,7 @@ await channel.Publish(message);
 To run the sender application, in the *`samples\Speller.IntegrationPatterns.RabbitMQ\Sample01-HelloWorld`* directory, call:
 
 ```bash
-dotnet run Send
+dotnet run --project Send
 ```
 
 ## Receiving
@@ -104,7 +104,7 @@ public class Receive : IMessageHandler<RabbitMQDelivery>
 To run the receiver application, in the *`samples\Speller.IntegrationPatterns.RabbitMQ\Sample01-HelloWorld`* directory, call:
 
 ```bash
-dotnet run Receive
+dotnet run --project Receive
 ```
 
 # Integration Patterns Reference
