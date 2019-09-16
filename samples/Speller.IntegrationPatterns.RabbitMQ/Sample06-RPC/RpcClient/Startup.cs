@@ -11,6 +11,12 @@ namespace RpcClient
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareQueue(
+                                    "rpc_queue",
+                                    durable: false,
+                                    exclusive: false,
+                                    autoDelete: false
+                                )
                                 .AddRequestReply()
                         )
                 );

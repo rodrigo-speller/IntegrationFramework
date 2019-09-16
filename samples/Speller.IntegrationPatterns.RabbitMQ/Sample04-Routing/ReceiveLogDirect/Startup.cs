@@ -18,6 +18,7 @@ namespace ReceiveLogsDirect
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareExchange("direct_logs", type: "direct")
                                 .DeclareQueue(
                                     queue => {
                                         foreach (var severity in severities)

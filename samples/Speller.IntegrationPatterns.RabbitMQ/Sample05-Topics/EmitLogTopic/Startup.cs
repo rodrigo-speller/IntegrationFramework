@@ -11,6 +11,7 @@ namespace EmitLogTopic
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareExchange("topic_logs", type: "topic")
                                 .MapRoute<string>("", "topic_logs")
                         )
                 );

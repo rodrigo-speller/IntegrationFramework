@@ -11,6 +11,7 @@ namespace ReceiveLogs
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareExchange("logs", type: "fanout")
                                 .Subscribe<ReceiveLogs>()
                         )
                 );

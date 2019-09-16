@@ -18,6 +18,7 @@ namespace ReceiveLogsTopic
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareExchange("topic_logs", type: "topic")
                                 .DeclareQueue(
                                     queue => {
                                         foreach (var bindingKey in bindingKeys)

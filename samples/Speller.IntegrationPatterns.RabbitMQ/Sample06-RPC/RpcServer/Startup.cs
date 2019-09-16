@@ -10,7 +10,14 @@ namespace RpcServer
                     service => service
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
+                            // TODO: Channel QoS
                             channel => channel
+                                .DeclareQueue(
+                                    "rpc_queue",
+                                    durable: false,
+                                    exclusive: false,
+                                    autoDelete: false
+                                )
                                 .Subscribe<RpcServer>()
                         )
                 );

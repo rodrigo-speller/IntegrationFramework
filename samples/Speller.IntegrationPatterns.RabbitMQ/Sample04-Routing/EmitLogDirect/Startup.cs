@@ -11,6 +11,7 @@ namespace EmitLogDirect
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareExchange("direct_logs", type: "direct")
                                 .MapRoute<string>("", "direct_logs")
                         )
                 );

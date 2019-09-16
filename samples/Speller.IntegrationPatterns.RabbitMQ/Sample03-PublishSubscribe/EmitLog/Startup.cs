@@ -11,6 +11,8 @@ namespace EmitLog
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareQueue()
+                                .DeclareExchange("logs", type: "fanout")
                                 .MapRoute<string>("", "logs")
                         )
                 );

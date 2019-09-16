@@ -10,7 +10,14 @@ namespace Worker
                     service => service
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
+                            // TODO: Channel QoS
                             channel => channel
+                                .DeclareQueue(
+                                    "task_queue",
+                                    durable: true,
+                                    exclusive: false,
+                                    autoDelete: false
+                                )
                                 .Subscribe<Worker>()
                         )
                 );

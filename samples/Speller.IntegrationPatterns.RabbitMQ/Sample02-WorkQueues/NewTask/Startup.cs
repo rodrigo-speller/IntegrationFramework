@@ -12,6 +12,12 @@ namespace NewTask
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
                             channel => channel
+                                .DeclareQueue(
+                                    "task_queue",
+                                    durable: true,
+                                    exclusive: false,
+                                    autoDelete: false
+                                )
                                 .MapRoute<string>("task_queue", str => {
                                     var content = new StringContent(str);
 
