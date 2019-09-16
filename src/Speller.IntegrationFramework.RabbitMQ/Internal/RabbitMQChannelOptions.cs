@@ -13,18 +13,21 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             IServiceProvider services,
             Func<IServiceProvider, ISubscriber>[] subscribersFactories,
             MessageTypeOptionsProvider messageTypeOptionsProvider,
+            RabbitMQExchangeOptions[] exchangesOptions,
             RabbitMQQueueOptions[] queuesOptions)
         {
             Tag = tag;
             Services = services;
             SubscribersFactories = subscribersFactories;
             MessageTypeOptionsProvider = messageTypeOptionsProvider;
+            ExchangesOptions = exchangesOptions;
             QueuesOptions = queuesOptions;
         }
         
         public object Tag { get; }
         public IServiceProvider Services { get; }
         public MessageTypeOptionsProvider MessageTypeOptionsProvider { get; }
+        public IEnumerable<RabbitMQExchangeOptions> ExchangesOptions { get; }
         public IEnumerable<RabbitMQQueueOptions> QueuesOptions { get; }
         public IEnumerable<Func<IServiceProvider, ISubscriber>> SubscribersFactories { get; }
     }

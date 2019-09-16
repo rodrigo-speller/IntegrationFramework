@@ -85,6 +85,17 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             var channelOptions = channel.Options;
             var channelModel = channel.Model;
 
+            foreach (var exchangeOptions in channelOptions.ExchangesOptions)
+            {
+                channelModel.ExchangeDeclare(
+                    exchangeOptions.Exchange,
+                    exchangeOptions.Type,
+                    exchangeOptions.Durable,
+                    exchangeOptions.AutoDelete,
+                    exchangeOptions.Arguments
+                );
+            }
+
             foreach (var queueOptions in channelOptions.QueuesOptions)
             {
                 var queueDeclaration = channelModel.QueueDeclare(

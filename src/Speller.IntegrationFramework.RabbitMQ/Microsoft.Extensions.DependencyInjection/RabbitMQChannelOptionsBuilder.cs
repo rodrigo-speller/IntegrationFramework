@@ -26,11 +26,18 @@ namespace Microsoft.Extensions.DependencyInjection
         internal ICollection<Func<IServiceProvider, ISubscriber>> SubscribersFactories { get; }
             = new LinkedList<Func<IServiceProvider, ISubscriber>>();
 
+        internal ICollection<Func<RabbitMQExchangeOptions>> ExchangesOptionsFactories { get; }
+            = new LinkedList<Func<RabbitMQExchangeOptions>>();
+
         internal ICollection<Func<RabbitMQQueueOptions>> QueuesOptionsFactories { get; }
             = new LinkedList<Func<RabbitMQQueueOptions>>();
 
         internal RabbitMQChannelOptions Build()
         {
+            var exchangesOptions = ExchangesOptionsFactories
+                .Select(factory => factory())
+                .ToArray();
+
             var queuesOptions = QueuesOptionsFactories
                 .Select(factory => factory())
                 .ToArray();
@@ -40,6 +47,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 Services,
                 SubscribersFactories.ToArray(),
                 MessageTypeOptionsProvider,
+                exchangesOptions,
                 queuesOptions
             );
         }
