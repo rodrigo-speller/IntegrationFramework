@@ -10,6 +10,8 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
     {
         public RabbitMQChannelOptions(
             object tag,
+            ushort? channelPrefetchCount,
+            ushort? consumerPrefetchCount,
             IServiceProvider services,
             Func<IServiceProvider, ISubscriber>[] subscribersFactories,
             MessageTypeOptionsProvider messageTypeOptionsProvider,
@@ -18,6 +20,8 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
         {
             Tag = tag;
             Services = services;
+            ChannelPrefetchCount = channelPrefetchCount;
+            ConsumerPrefetchCount = consumerPrefetchCount;
             SubscribersFactories = subscribersFactories;
             MessageTypeOptionsProvider = messageTypeOptionsProvider;
             ExchangesOptions = exchangesOptions;
@@ -25,6 +29,8 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
         }
         
         public object Tag { get; }
+        public ushort? ChannelPrefetchCount { get; }
+        public ushort? ConsumerPrefetchCount { get; }
         public IServiceProvider Services { get; }
         public MessageTypeOptionsProvider MessageTypeOptionsProvider { get; }
         public IEnumerable<RabbitMQExchangeOptions> ExchangesOptions { get; }

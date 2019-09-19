@@ -10,8 +10,8 @@ namespace Worker
                     service => service
                         .ConnectionString("amqp://localhost")
                         .DefaultChannel(
-                            // TODO: Channel QoS
                             channel => channel
+                                .PrefetchPerConsumer(1)
                                 .DeclareQueue(
                                     "task_queue",
                                     durable: true,

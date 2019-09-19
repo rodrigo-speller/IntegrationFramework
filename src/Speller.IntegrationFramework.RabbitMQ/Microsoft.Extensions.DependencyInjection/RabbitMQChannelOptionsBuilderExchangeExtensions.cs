@@ -32,5 +32,19 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return builder;
         }
+
+        public static RabbitMQChannelOptionsBuilder Prefetch(this RabbitMQChannelOptionsBuilder builder, ushort count)
+        {
+            builder.ChannelPrefetchCount = count;
+
+            return builder;
+        }
+
+        public static RabbitMQChannelOptionsBuilder PrefetchPerConsumer(this RabbitMQChannelOptionsBuilder builder, ushort count)
+        {
+            builder.ConsumerPrefetchCount = count;
+
+            return builder;
+        }
     }
 }

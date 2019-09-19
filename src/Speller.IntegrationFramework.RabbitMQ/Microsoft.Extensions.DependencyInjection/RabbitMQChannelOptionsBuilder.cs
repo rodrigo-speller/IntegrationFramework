@@ -18,6 +18,8 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         public object Tag { get; }
+        internal ushort? ChannelPrefetchCount { get; set; }
+        internal ushort? ConsumerPrefetchCount { get; set; }
 
         internal IServiceProvider Services { get; }
 
@@ -44,6 +46,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return new RabbitMQChannelOptions(
                 Tag,
+                ChannelPrefetchCount,
+                ConsumerPrefetchCount,
                 Services,
                 SubscribersFactories.ToArray(),
                 MessageTypeOptionsProvider,

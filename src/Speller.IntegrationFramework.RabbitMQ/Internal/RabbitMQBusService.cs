@@ -65,6 +65,13 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             foreach (var channelOptions in options.Channels)
             {
                 var channelModel = connection.CreateModel();
+
+                if (channelOptions.ChannelPrefetchCount.HasValue)
+                    channelModel.BasicQos(0, channelOptions.ChannelPrefetchCount.Value, true);
+
+                if (channelOptions.ConsumerPrefetchCount.HasValue)
+                    channelModel.BasicQos(0, channelOptions.ConsumerPrefetchCount.Value, false);
+
                 var channel = new RabbitMQChannel(channelOptions, channelModel);
 
                 channels.Add(channel.Tag, channel);
