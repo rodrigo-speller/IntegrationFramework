@@ -25,8 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
         internal MessageTypeOptionsProvider MessageTypeOptionsProvider { get; }
 
-        internal ICollection<Func<IServiceProvider, ISubscriber>> SubscribersFactories { get; }
-            = new LinkedList<Func<IServiceProvider, ISubscriber>>();
+        internal ICollection<Func<IServiceProvider, IConsumer>> SubscribersFactories { get; }
+            = new LinkedList<Func<IServiceProvider, IConsumer>>();
 
         internal ICollection<Func<RabbitMQExchangeOptions>> ExchangesOptionsFactories { get; }
             = new LinkedList<Func<RabbitMQExchangeOptions>>();

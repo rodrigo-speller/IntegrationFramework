@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Speller.IntegrationFramework
 {
-    public interface IPublishSubscribeChannel
+    public interface IMessageReceiver : IMessageEndpoint
     {
-        Task Publish<TMessage>(TMessage message);
-        Task Subscribe<TMessage>(IMessageHandler<TMessage> handler);
+        Task Receive<TMessage>(TMessage message);
     }
 }

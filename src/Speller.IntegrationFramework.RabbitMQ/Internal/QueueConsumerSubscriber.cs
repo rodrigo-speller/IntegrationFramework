@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Speller.IntegrationFramework.RabbitMQ.Internal
 {
-    internal sealed class QueueConsumerSubscriber : ISubscriber
+    internal sealed class QueueConsumerSubscriber : IConsumer
     {
         private readonly string queue;
         private readonly AcknowledgeMode acknowledgeMode;

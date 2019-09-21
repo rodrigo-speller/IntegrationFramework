@@ -25,10 +25,10 @@ namespace EmitLog
         {
             await host.StartAsync();
 
-            var channel = host.Services.GetService<IPublishSubscribeChannel>();
+            var sender = host.Services.GetService<IMessageSender>();
 
             var message = GetMessage(args);
-            await channel.Publish(message);
+            await sender.Send(message);
             Console.WriteLine(" [x] Sent {0}", message);
 
             Console.WriteLine(" Press [enter] to exit.");

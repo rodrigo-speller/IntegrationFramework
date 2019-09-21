@@ -29,8 +29,8 @@ namespace Microsoft.Extensions.DependencyInjection
         internal ICollection<Func<IServiceProvider, Task>> OnDeclaredActions { get; }
             = new LinkedList<Func<IServiceProvider, Task>>();
 
-        internal ICollection<Func<IServiceProvider, ISubscriber>> MessageHandlersFactories { get; }
-            = new LinkedList<Func<IServiceProvider, ISubscriber>>();
+        internal ICollection<Func<IServiceProvider, IConsumer>> MessageHandlersFactories { get; }
+            = new LinkedList<Func<IServiceProvider, IConsumer>>();
 
         internal RabbitMQQueueOptions Build()
             => new RabbitMQQueueOptions(

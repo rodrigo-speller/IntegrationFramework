@@ -18,5 +18,25 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
                 DefaultExchange = DefaultExchange,
                 Formatter = Formatter
             };
+
+        public IMessageContent GetContent(object message)
+        {
+            var formatter = Formatter;
+
+            IMessageContent content;
+            if (formatter == null)
+            {
+                content = message as IMessageContent;
+
+                if (content == null)
+                    throw new InvalidOperationException("The message type formatter must be defined.");
+            }
+            else
+            {
+                content = formatter(message);
+            }
+
+            return content;
+        }
     }
 }

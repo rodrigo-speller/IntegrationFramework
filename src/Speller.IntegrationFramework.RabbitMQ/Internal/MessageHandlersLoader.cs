@@ -14,7 +14,7 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
         private static readonly MethodInfo MessageHandlerMethod = typeof(IMessageHandler<RabbitMQDelivery>)
             .GetMethod(nameof(IMessageHandler<RabbitMQDelivery>.Handle));
 
-        internal static IEnumerable<Func<IServiceProvider, ISubscriber>> LoadFromAssembly(Assembly assembly)
+        internal static IEnumerable<Func<IServiceProvider, IConsumer>> LoadFromAssembly(Assembly assembly)
         {
             foreach (var type in assembly.DefinedTypes)
             {
@@ -25,7 +25,7 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             }
         }
 
-        internal static Func<IServiceProvider, ISubscriber> LoadFromType(Type type)
+        internal static Func<IServiceProvider, IConsumer> LoadFromType(Type type)
         {
             if (!IsMessageHandler(type.GetTypeInfo()))
                 throw new ArgumentException(null, nameof(type));
@@ -33,10 +33,10 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             return services => BuildMessageHandler(services, type);
         }
 
-        internal static ISubscriber BuildMessageHandler(IServiceProvider services, Type type)
+        internal static IConsumer BuildMessageHandler(IServiceProvider services, Type type)
         {
             var handler = (IMessageHandler<RabbitMQDelivery>)ActivatorUtilities.CreateInstance(services, type);
-            if (handler is ISubscriber subscriber)
+            if (handler is IConsumer subscriber)
                 return subscriber;
 
             var acknowledgeMode = AcknowledgeModeAttribute.FromType(type);
@@ -62,10 +62,10 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             return new QueueConsumerSubscriber(subscription.Queue, acknowledgeMode, exceptionMode, handler, asyncContextAccessor);
         }
 
-        internal static ISubscriber BuildMessageHandlerToQueueDeclare(string queue, IServiceProvider services, Type type)
+        internal static IConsumer BuildMessageHandlerToQueueDeclare(string queue, IServiceProvider services, Type type)
         {
             var handler = (IMessageHandler<RabbitMQDelivery>)ActivatorUtilities.CreateInstance(services, type);
-            if (handler is ISubscriber subscriber)
+            if (handler is IConsumer subscriber)
                 return subscriber;
 
             var asyncContextAccessor = services.GetRequiredService<AsyncContextAccessor>();

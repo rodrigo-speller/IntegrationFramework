@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Speller.IntegrationFramework.RabbitMQ
 {
-    public interface IRabbitMQChannel : IPublishSubscribeChannel
+    public interface IRabbitMQChannel : IMessageChannel
     {
-        Task Publish<TMessage>(TMessage message, string routingKey, string exchange);
+        IMessageContent Format<TMessage>(TMessage message);
+        Task Send<TMessage>(TMessage message, string routingKey, string exchange);
     }
 }

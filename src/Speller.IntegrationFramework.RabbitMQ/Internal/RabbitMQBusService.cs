@@ -115,8 +115,6 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
 
                 var queue = new RabbitMQQueue(queueOptions, queueDeclaration.QueueName);
 
-                channel.AddQueue(queue);
-
                 services.GetContextAccessor()
                     .Set(channel, queue);
 

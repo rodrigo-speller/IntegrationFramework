@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Speller.IntegrationFramework.RabbitMQ.Internal
 {
-    internal sealed class ExchangeBindingSubscriber : ISubscriber
+    internal sealed class ExchangeBindingSubscriber : IConsumer
     {
         private readonly string exchange;
         private readonly string routingKey;

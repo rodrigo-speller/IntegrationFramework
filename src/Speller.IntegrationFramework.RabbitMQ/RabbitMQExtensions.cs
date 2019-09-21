@@ -8,6 +8,6 @@ namespace Speller.IntegrationFramework.RabbitMQ
     public static class RabbitMQExtensions
     {
         public static Task Publish<TMessage>(this IRabbitMQChannel channel, TMessage message, string routingKey = null, string exchange = null)
-            => channel.Publish(message, routingKey, exchange);
+            => channel.Send(message, routingKey, exchange);
     }
 }

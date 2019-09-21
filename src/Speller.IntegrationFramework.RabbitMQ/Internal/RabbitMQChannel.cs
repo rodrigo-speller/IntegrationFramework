@@ -4,114 +4,50 @@
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Speller.IntegrationFramework.RabbitMQ.Internal
 {
-    internal sealed class RabbitMQChannel : IRabbitMQChannel, IMessageContentFormatter
+    internal sealed class RabbitMQChannel : IRabbitMQChannel
     {
-        private readonly List<RabbitMQQueue> queues = new List<RabbitMQQueue>();
-
         public RabbitMQChannel(RabbitMQChannelOptions options, IModel model)
         {
             Options = options;
             Model = model;
+
+            Sender = new RabbitMQMessageSender(this);
         }
 
+        public RabbitMQChannelOptions Options { get; }
         public object Tag => Options.Tag;
+
         public IModel Model { get; }
+        public RabbitMQMessageSender Sender { get; }
 
-        internal RabbitMQChannelOptions Options { get; }
+        public IMessageContent Format<TMessage>(TMessage message)
+            => Options.MessageTypeOptionsProvider.Get<TMessage>().GetContent(message);
 
-        public Task Publish<TMessage>(TMessage message)
-            => Publish(message, null, null);
-        
-        public IMessageContent FormatMessageContent<TMessage>(TMessage message)
+        public Task Send<TMessage>(TMessage message, string routingKey, string exchange)
+            => Sender.Send(message, routingKey, exchange);
+
+        internal Task Subscribe(IConsumer consumer)
         {
-            var typeOptions = Options.MessageTypeOptionsProvider.Get<TMessage>();
+            if (consumer == null)
+                throw new ArgumentNullException(nameof(consumer));
 
-            return FormatMessageContent(message, typeOptions);
+            return Subscribe((_) => consumer);
         }
 
-        public IMessageContent FormatMessageContent(object message, MessageTypeOptions typeOptions)
-        {
-            IMessageContent content;
-            if (typeOptions.Formatter == null)
-            {
-                content = message as IMessageContent;
-
-                if (content == null)
-                    throw new InvalidOperationException("The message type formatter must be defined.");
-            }
-            else
-            {
-                content = typeOptions.Formatter(message);
-            }
-
-            return content;
-        }
-
-        public async Task Publish<TMessage>(TMessage message, string routingKey, string exchange)
-        {
-            var typeOptions = Options.MessageTypeOptionsProvider.Get<TMessage>();
-            var content = FormatMessageContent(message, typeOptions);
-
-            routingKey = routingKey ?? typeOptions.DefaultRoutingKey ?? string.Empty;
-            exchange = exchange ?? typeOptions.DefaultExchange ?? string.Empty;
-
-            await Publish(content, routingKey, exchange);
-        }
-
-        private Task Publish(IMessageContent content, string routingKey, string exchange)
-        {
-            var model = Model;
-
-            var body = content.GetBody();
-            var properties = content.Properties.Build(model);
-
-            model.BasicPublish(
-                exchange,
-                routingKey,
-                properties,
-                body
-            );
-
-            return Task.CompletedTask;
-        }
-
-        internal void AddQueue(RabbitMQQueue queue)
-            => queues.Add(queue);
-
-        public Task Subscribe<TMessage>(IMessageHandler<TMessage> handler)
-        {
-            if (handler is ISubscriber subscriber)
-                return Subscribe(subscriber);
-
-            if (handler == null)
-                throw new ArgumentNullException(nameof(handler));
-
-            throw new InvalidOperationException();
-        }
-
-        internal Task Subscribe(ISubscriber subscriber)
-        {
-            if (subscriber == null)
-                throw new ArgumentNullException(nameof(subscriber));
-
-            return Subscribe((_) => subscriber);
-        }
-
-        internal async Task Subscribe(Func<IServiceProvider, ISubscriber> subscriberFactory)
+        internal async Task Subscribe(Func<IServiceProvider, IConsumer> consumerFactory)
         {
             var services = Options.Services;
 
             services.GetContextAccessor()
                 .Set(this);
                 
-            var subscriber = subscriberFactory(services);
+            var consumer = consumerFactory(services);
 
-            await subscriber.Initialize(this);
+            await consumer.Initialize(this);
         }
     }
 }

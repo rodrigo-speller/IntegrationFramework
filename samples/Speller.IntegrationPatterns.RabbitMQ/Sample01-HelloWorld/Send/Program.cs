@@ -26,10 +26,10 @@ namespace Send
             await host.StartAsync();
 
             var services = host.Services;
-            var channel = services.GetService<IPublishSubscribeChannel>();
+            var sender = services.GetService<IMessageSender>();
 
             var message = "Hello World!";
-            await channel.Publish(message);
+            await sender.Send(message);
             Console.WriteLine(" [x] Sent {0}", message);
 
             Console.WriteLine(" Press [enter] to exit.");

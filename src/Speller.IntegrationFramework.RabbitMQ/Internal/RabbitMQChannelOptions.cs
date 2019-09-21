@@ -13,7 +13,7 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
             ushort? channelPrefetchCount,
             ushort? consumerPrefetchCount,
             IServiceProvider services,
-            Func<IServiceProvider, ISubscriber>[] subscribersFactories,
+            Func<IServiceProvider, IConsumer>[] subscribersFactories,
             MessageTypeOptionsProvider messageTypeOptionsProvider,
             RabbitMQExchangeOptions[] exchangesOptions,
             RabbitMQQueueOptions[] queuesOptions)
@@ -35,6 +35,6 @@ namespace Speller.IntegrationFramework.RabbitMQ.Internal
         public MessageTypeOptionsProvider MessageTypeOptionsProvider { get; }
         public IEnumerable<RabbitMQExchangeOptions> ExchangesOptions { get; }
         public IEnumerable<RabbitMQQueueOptions> QueuesOptions { get; }
-        public IEnumerable<Func<IServiceProvider, ISubscriber>> SubscribersFactories { get; }
+        public IEnumerable<Func<IServiceProvider, IConsumer>> SubscribersFactories { get; }
     }
 }

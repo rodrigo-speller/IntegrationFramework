@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Rodrigo Speller. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-namespace Speller.IntegrationFramework.RabbitMQ
+using System.Threading.Tasks;
+
+namespace Speller.IntegrationFramework.RabbitMQ.Internal
 {
-    public interface IMessageContentFormatter
+    internal interface IConsumer
     {
-        IMessageContent FormatMessageContent<TMessage>(TMessage message);
+        Task Initialize(RabbitMQChannel channel);
     }
 }

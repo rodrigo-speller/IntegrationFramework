@@ -18,16 +18,16 @@ The quickest way to get the latest release of the Integration Framework is to ad
 
 ## Simple RabbitMQ "Hello World" sample code
 
-In the sender application, resolve the channel and publish message to `hello-queue`:
+In the sender application, resolve the channel and send message to `hello-queue`:
 
 ```csharp
 public static async Task SayHelloWorld()
 {
-    services.GetService<IRabbitMQChannel>();
+    var channel = services.GetService<IRabbitMQChannel>();
 
     var message = "Hello World!";
     
-    await channel.Publish("hello-queue", message);
+    await channel.Send(message, "hello-queue");
 }
 ```
 

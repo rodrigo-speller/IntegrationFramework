@@ -31,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<IRabbitMQChannel>(provider => provider.GetService<IRabbitMQChannelAccessor>().Channel
                     ?? provider.GetService<IRabbitMQBusService>().DefaultChannel)
                 .AddTransient<IRabbitMQQueue>(provider => provider.GetService<IRabbitMQQueueAccessor>().Queue)
-                .AddTransient<IPublishSubscribeChannel>(provider => provider.GetService<IRabbitMQChannel>())
+                .AddTransient<IMessageSender>(provider => ((RabbitMQChannel)provider.GetService<IRabbitMQChannel>()).Sender)
                 ;
 
             return services;

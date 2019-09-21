@@ -48,10 +48,10 @@ We send the message through the default channel. To resolve the default channel,
 Our message type is `string`, it will be automatically routed as configured for this channel.
 
 ```csharp
-var channel = services.GetService<IPublishSubscribeChannel>();
+var sender = services.GetService<IMessageSender>();
 
 var message = "Hello World!";
-await channel.Publish(message);
+await sender.Send(message);
 ```
 
 To run the sender application, in the *`samples\Speller.IntegrationPatterns.RabbitMQ\Sample01-HelloWorld`* directory, call:

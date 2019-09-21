@@ -14,10 +14,7 @@ namespace Speller.IntegrationFramework.RabbitMQ
             if (channel == null)
                 throw new NullReferenceException();
 
-            var formatter = channel as IMessageContentFormatter
-                ?? throw new InvalidOperationException($"The channel type does not implements {nameof(IMessageContentFormatter)}.");
-
-            var content = formatter.FormatMessageContent(message);
+            var content = channel.Format(message);
 
             return await channel.Request(content, exchange, routingKey);
         }
@@ -29,7 +26,7 @@ namespace Speller.IntegrationFramework.RabbitMQ
 
             var model = new RequestReplyModel(content);
 
-            await channel.Publish(model, routingKey, exchange);
+            await channel.Send(model, routingKey, exchange);
 
             return await model.Context.Task;
         }
