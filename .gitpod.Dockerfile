@@ -6,3 +6,5 @@ RUN apt-get update -y \
     && apt-get install apt-transport-https -y \
     && apt-get update -y \
     && apt-get install rabbitmq-server -y
+
+CMD .gitpod.init
